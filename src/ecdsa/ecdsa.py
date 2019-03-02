@@ -111,13 +111,14 @@ class Public_key(object):
     self.generator = generator
     self.point = point
     n = generator.order()
+    '''                                      #comment the output-point checks out
     if not n:
       raise RuntimeError("Generator point must have order.")
     if not n * point == ellipticcurve.INFINITY:
       raise RuntimeError("Generator point order is bad.")
     if point.x() < 0 or n <= point.x() or point.y() < 0 or n <= point.y():
       raise RuntimeError("Generator point has x or y out of range.")
-
+    '''
   def verifies(self, hash, signature):
     """Verify that signature is a valid signature of hash.
     Return True if the signature is valid.
@@ -266,7 +267,7 @@ _r = 115792089210356248762697446949407573529996955224135760342422259061068512044
 # s = 0xc49d360886e704936a6678e1139d26b7819f7e90L
 # c = 0x7efba1662985be9403cb055c75d4f7e0ce8d84a9c5114abcaf3177680104fa0dL
 _b = 0x5ac635d8aa3a93e7b3ebbd55769886bc651d06b0cc53b0f63bce3c3e27d2604b
-_Gx = 0x6b17d1f2e12c4247f8bce6e563a440f277037d812deb33a0f4a13945d898c297    #change the last bit of _Gx
+_Gx = 0x6b17d1f2e12c4247f8bce6e563a440f277037d812deb33a0f4a13945d898c297    #change the last bit of _Gx by achaos
 #_Gx = 0x6b17d1f2e12c4247f8bce6e563a440f277037d812deb33a0f4a13945d898c296  
 _Gy = 0x4fe342e2fe1a7f9b8ee7eb4a7c0f9e162bce33576b315ececbb6406837bf51f5
 
